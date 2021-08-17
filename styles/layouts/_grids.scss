@@ -61,7 +61,7 @@ $lg-max-container: ($lg-unit + $gutter) * $lg-columns;
 
   @include responsive(T) {
     max-width: $md-max-container;
-    padding: $md-margin;
+    padding: 0 $md-margin;
 
     @for $i from 1 through $md-columns {
       .col-md-#{$i} {
