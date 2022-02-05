@@ -17,3 +17,25 @@ function closeOrderModal() {
 }
 
 orderModalOverlay.addEventListener('click', closeOrderModal)
+
+function toggleOrderCtaBookmark() {
+  // 3. 카운트 숫자 값을 변경 (aria-label도 함께)
+  const [icon, countSpan] = this.children
+  const count = Number(countSpan.innerHTML.replaceAll(',', ''))
+  let newCount = count
+
+  if (this.classList.contains('is-active')) {
+    icon.setAttribute('class', 'ic-bookmark')
+    newCount = newCount - 1
+  } else {
+    icon.setAttribute('class', 'ic-bookmark-filled')
+    newCount = newCount + 1
+  }
+
+  countSpan.innerHTML = newCount.toLocaleString()
+  countSpan.setAttribute('aria-label', `북마크 ${newCount.toLocaleString()}회`)
+
+  this.classList.toggle('is-active')
+}
+
+orderCtaBookmarkButton.addEventListener('click', toggleOrderCtaBookmark)
